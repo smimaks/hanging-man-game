@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <title>Профиль</title>
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+    <h2>Профиль игрока</h2>
+    </div>
+</header>
+
+<main>
+    <section class="user">
+        <div class="user-wrapper">
+    <div class="username">
+        <h3 class="userLogin">Имя</h3>
+    </div>
+    <div class="user-statistics">
+        <ul class="statistics">
+            <li id="wrong" class="statistics-list"></li>
+            <li id="right" class="statistics-list"></li>
+            <li id="gamesCounter" class="statistics-list"></li>
+        </ul>
+
+    </div>
+    <div class="buttons">
+        <a class="play-btn user-btn" href="game.html">Играть</a>
+        <button class="logout-btn user-btn">Выйти</button>
+        <button class="show-stats user-btn">Статистика</button>
+    </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="footer-wrapper">
+    <p>&copy;AllRightsReserved</p>
+    </div>
+</footer>
+<script src="../js/api.js"></script>
+<script src="../js/tokenValidator.js"></script>
+<script>
+
+
+        (async () => {
+            const api = new Api();
+            const token = localStorage.getItem('token');
+            const data = await api.getProfile(token);
+            document.querySelector('.userLogin').innerText = data.username;
+
+            document.querySelector('.show-stats').addEventListener('click', async () => {
+                const userResult= await api.getStatistic(token);
+                console.log(userResult)
+                const statisticsValues = Object.entries(userResult);
+                console.log(statisticsValues);
+                for (const [key, value] of statisticsValues) {
+                    // console.log(value)
+                    document.querySelector(`#${key}`).innerText = `${key}: ${value}`;
+                }
+            })
+
+            document.querySelector('.logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('token');
+                window.location.href = '/'
+            })
+        })();
+
+
+
+</script>
+</body>
+</html>

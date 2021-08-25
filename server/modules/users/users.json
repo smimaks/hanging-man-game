@@ -1,0 +1,12 @@
+[
+    {
+        "username": "maks",
+        "password": "1111",
+        "token": "wu9ad8fom",
+        "statistics": {
+            "wrong": 14,
+            "right": 9,
+            "gamesCounter": 3
+        }
+    }
+]

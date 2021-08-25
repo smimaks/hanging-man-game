@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/game.css">
+    <title>Hanging Man</title>
+</head>
+<body>
+<header>
+    <h1>Game</h1>
+</header>
+
+<main>
+    <section class="start">
+        <div class="start-container">
+            <span>Выберите уровень</span>
+            <select id="level">
+                <option value="easy">Легкий</option>
+                <option selected value="medium">Средний</option>
+                <option value="hard">Тяжелый</option>
+            </select>
+            <button class="start-btn">Начать игру</button>
+        </div>
+    </section>
+    <section class="hanging-man">
+        <div class="hanging-man-container">
+
+        </div>
+    </section>
+    <section class="letters">
+        <div class="letters-container">
+
+        </div>
+    </section>
+    <section class="secret-word">
+        <div class="secret-word-container">
+        </div>
+
+        <div class="btn-container">
+            <button class="logout">Выйти</button>
+            <a href="./profile.html">Назад</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy;AllRightsReserved</p>
+</footer>
+
+<script src="../js/api.js"></script>
+<script src="../js/tokenValidator.js"></script>
+<script src="../js/view.js"></script>
+<script src="../js/logic.js"></script>
+<script src="../js/controller.js"></script>
+<script>
+
+ const startBtn =  document.querySelector('.start-btn');
+ const logOut = document.querySelector('.logout');
+ const lettersContainer = document.querySelector('.letters-container');
+ const secretWordContainer = document.querySelector('.secret-word-container')
+ const hangingManContainer = document.querySelector('.hanging-man-container')
+ const levelOptions = document.querySelectorAll('option');
+const token = localStorage.getItem('token');
+
+ const api = new Api();
+ const model = new Model(api, token);
+ const view = new View({startBtn, lettersContainer, levelOptions, secretWordContainer,hangingManContainer})
+ const controller = new Controller(model, view, api, token)
+
+ controller.initGame()
+
+ logOut.addEventListener('click', () => {
+     localStorage.removeItem('token');
+     window.location.reload()
+ })
+
+</script>
+</body>
+</html>

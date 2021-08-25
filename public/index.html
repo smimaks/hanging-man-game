@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <title>Registration</title>
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+        <h2>Виселица</h2>
+        <p>Звучит страшно, но это просто игра</p>
+
+    </div>
+</header>
+
+<div class="form-container">
+    <div class="form">
+        <input type="text" placeholder="ЛОГИН" class="register-fields login">
+        <input type="password" placeholder="ПАРОЛЬ" class="register-fields password">
+
+        <div class="reg-buttons">
+        <button class="regist index-btn">Регистрация</button>
+        <button class="log-in index-btn">Вход</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-wrapper">
+    <p>&copy; All Rights Reserved</p>
+    </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/User.js"></script>
+
+
+<script>
+localStorage.removeItem('token');
+const userData = document.querySelectorAll('.register-fields');
+const [loginElem, passwordElem] = Array.from(userData);
+const api = new Api();
+const user = new User(loginElem, passwordElem, api);
+
+
+
+
+ document.querySelector('.regist').addEventListener('click', async ()=> {
+ const data = await user.createUser();
+     if(data.type !== 'error'){
+         localStorage.setItem('token', data.token);
+         window.location.href = '/html/profile.html'
+     } else {
+         console.log(data.message)
+     }
+ })
+
+document.querySelector('.log-in').addEventListener( 'click', async () => {
+
+ const data = await api.authUser({username: loginElem.value, password: passwordElem.value})
+    if(data.type !== 'error'){
+        localStorage.setItem('token', data.token);
+        window.location.href = '/html/profile.html'
+    }
+})
+</script>
+
+
+</body>
+</html>

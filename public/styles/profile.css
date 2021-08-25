@@ -1,0 +1,67 @@
+
+.header-wrapper h2 {
+    text-align: center;
+    color: dodgerblue;
+    margin: 15px 0;
+}
+
+.user{
+    display: flex;
+    justify-content: center;
+}
+
+.user-wrapper{
+    outline: 3px solid cornflowerblue;
+    width: 450px;
+    height: 600px;
+}
+
+
+.userLogin {
+    text-align: center;
+}
+.statistics{
+    list-style: none;
+}
+.statistics-list{
+    border-bottom: 3px solid lightblue;
+    width: 85%;
+    margin: 15px 0 35px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ a{
+    text-decoration: none;
+    color: #666666;
+}
+.user-btn{
+    margin: 10px 0 ;
+    color: #666666;
+    padding: 10px 60px;
+    background: none;
+    border: 2px solid cadetblue;
+    border-radius: 5px ;
+}
+
+.user-btn:hover{
+    transform:scale(1.1);
+    transition: 0.2s;
+    background: rgba(95, 158, 160, 0.47);
+    cursor: pointer;
+}
+
+.user-btn:active{
+    background: transparent;
+}
+
+.footer-wrapper p{
+    font-size: 20px;
+    text-align: center;
+    font-family: Algerian, sans-serif;
+    color: cadetblue;
+}

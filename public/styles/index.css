@@ -1,0 +1,70 @@
+.header-wrapper{
+    margin: 0 0 30px;
+}
+
+.header-wrapper h2{
+    font-size: 30px;
+    text-align: center;
+    font-family: sans-serif;
+    color: cadetblue;
+}
+.header-wrapper p {
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+    color: #666666;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+.form{
+    padding: 80px 40px;
+    outline: 3px solid dodgerblue;
+ }
+
+
+
+.register-fields{
+    display: block;
+    margin: 25px 0;
+    border: none;
+    border-bottom: 2px solid cornflowerblue;
+    text-align: center;
+}
+.register-fields:focus{
+    outline: none;
+}
+
+.reg-buttons{
+    display: flex;
+  flex-direction: column;
+}
+
+.index-btn{
+    margin: 5px 0 ;
+    color: #666666;
+    padding: 3px 20px;
+    background: none;
+    border: 2px solid cadetblue;
+    border-radius: 5px ;
+}
+.index-btn:hover{
+    transform:scale(1.1);
+    transition: 0.2s;
+    background: rgba(95, 158, 160, 0.47);
+    cursor: pointer;
+}
+.index-btn:active{
+    background: none;
+}
+.footer-wrapper{
+    margin: 150px 0 0;
+}
+.footer-wrapper p {
+    font-size: 30px;
+    text-align: center;
+    font-family: Algerian, sans-serif;
+    color: cadetblue;
+}
